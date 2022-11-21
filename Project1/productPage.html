@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<style>
+body {
+  background:whitesmoke;
+}
+img{
+    position:relative;
+    top:0%;
+    width: 50%;
+    min-width:240px;
+    height: 243px;
+    background-color: #eee;
+}
+.container {
+ position: relative;
+  max-width: 600px;
+  max-height: 270px;
+  margin: auto;
+  background: #eee;
+}
+.container div{
+    padding-left: 5px;
+    position: absolute;
+    top:2%;
+    right:0%;
+    left:50%;
+    width:300px;
+    min-width: 200px;
+    background-color: #eee;
+
+}
+.container section{
+    padding-left:5px;
+    position: absolute;
+    top:250px;
+
+}
+.box span{
+    color:rgb(15, 201, 238);
+}
+#price{
+    font-weight: bold;
+}
+.one,.three,.five{
+    border-left: 4px solid blue;
+}
+.two,.four,.six{
+    border-left:4px solid green;
+}
+#cmd{
+    color: green;
+}
+.header{
+    font-weight: bold;
+}
+#header1{
+    border-bottom: 1px solid grey;
+    color:rgb(19, 115, 200);
+    font-weight: bold;
+}
+.button1{
+    width:20px;
+    height:20px;
+    font-weight: bold;
+}
+table, td, th {
+  border: 1px solid  rgb(216, 215, 215);
+}
+table{
+  width: 100%;
+  border-collapse: collapse;
+  border:1px rgb(160, 159, 159);
+}
+tr:hover{
+    background-color:grey ;
+    color:white;
+    border: white;
+}
+th{
+    background-color: rgba(196, 196, 196, 0.495);
+}
+.box{
+    position:relative;
+}
+.add{
+    position: absolute;
+    height:30px;
+    left:150px;
+    background-color:green;
+    color: white;
+}
+.add:hover{
+    background-color: blue;
+    color:white;
+    border-color: white;
+}
+.minus{
+    position: absolute;
+    left:50px;
+    width:30px;
+    height:30px;
+    font-weight: bold;
+    border:1px solid blue;
+    color: blue;
+}
+.minus:hover{
+    background-color: grey;
+    color:white;
+    border-color: white;
+}
+.number{
+    position: absolute;
+    left:80px;
+    width:30px;
+    height:30px;
+    font-weight: bold;
+    border:1px solid blue;
+    color: blue;
+}
+.number:hover{
+    background-color: grey;
+    color:white;
+    border-color: white;
+}
+.plus{
+    position: absolute;
+    left:110px;
+    width:30px;
+    height:30px;
+    font-weight: bold;
+    border:1px solid blue;
+    color: blue;
+}
+.plus:hover{
+    background-color: grey;
+    color:white;
+    border-color: white;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+<img src="arduino.jpg" alt="It is a arduino">
+<div class="box">
+    <p class="header">Orijinal Arduino Uno Mini-Limited Edition</p>
+    <ul>
+        <p class="one">Marka/Menşei:<span>Arduino</span></p>
+        <p class="two">Stok Kodu: 20530</p>
+        <p class="three">765,66 TL+KDV</p>
+        <p class="four"><span id="price">903,48 TL KDV DAHİL</span></p>
+        <span class="five"><button class="minus">-</button><button class="number">1</button><button class="plus">+</button></button><button class="add">Sepete Ekle</button>
+        </span>
+        <p class="six"><span id="cmd">*Alışveriş Listeme Ekle</span></p>
+    </ul>
+</div>
+<section class="attributes">
+    <p id="header1">Orijinal Arduino Uno Mini Özellikleri</p>
+    <ul>
+        <li>6 adet PWM çıkışı sağlayan 14 dijital I/O pini</li>
+        <li>6 analog giriş pini</li>
+        <li>16MHz seramik rezonatör</li>
+        <li>USB-C bağlantı noktası</li>
+        <li>USB veya harici bir güç kaynağı ile çalışır.</li>
+        <li>Yeniden başlatma tuşu</li>
+        <li>Anahtar bileşenler</li>
+        <li>Mikroçip Teknolojisi ATmega328 MCU</li>
+        <li>USB Denetleyicili Mikroçip Teknolojisi ATMega16U2 MCU</li>
+    </ul>
+    <br>
+    <p id="header1">Teknik Özellikleri</p>
+    <table>
+        <tr>
+            <th>Üretici Firma</th>
+            <th>Arduino</th>
+        </tr>
+        <tr>
+            <td>SRAM</td>
+            <td>2KB</td>
+          </tr>
+          <tr>
+            <td>Ürün Boyutları</td>
+            <td>10,9 x 9,09 x 5 cm</td>
+          </tr>
+          <tr>
+            <td>Ürün Ağırlığı</td>
+            <td>73,6 g</td>
+          </tr>
+    </table>
+</section>
+</div>
+
+</body>
+</html>
