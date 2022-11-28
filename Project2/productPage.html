@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content=
+        "width=device-width, initial-scale=1" />
+ 
+    <title>Product Page</title>
+ 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href=
+"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap Font Icon CSS -->
+    <link rel="stylesheet" href=
+"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fontawesome/6.2.0/css/all.min.css" integrity="sha512-
+xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+body{
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    grid-template-rows: 0.5fr;
+    grid-template-areas: "section1 section2";
+
+}
+.container{
+    margin-top: 10px;
+    margin-right: 5px;
+    height: 5%;
+    background-color: rgb(207, 197, 254);
+    text-align: left;
+    padding-top:20px ;
+    padding-left:20px ;
+    border-radius: 5px;
+    border:1px solid plum;
+}
+.section1{
+    grid-area: section1;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 0.5fr;
+    grid-template-areas: "image image"
+    "column column";
+    border-radius: 5px;
+    grid-area:section1;
+
+}
+.section2{
+    background-color: rgb(232, 232, 232);
+    grid-area: section2;
+    margin-top: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
+    border-radius: 5px;
+}
+#head{
+    font-weight: bold;
+    font-size: large;
+}
+#brand{
+    font-size: large;
+    color: blue;
+}
+#price{
+    font-size: x-large;
+    font-weight: bold;
+}
+.notchecked{
+    color: rgb(171, 171, 171);
+    float: right;
+}
+.checked{
+color: orange;
+float: right;
+}
+table{
+    border-spacing: 5px;
+    width:100%;
+}
+.image{
+    justify-content: center;
+    grid-area: image;
+}
+.row{
+display: grid;
+grid-template-columns: 0.5fr 0.5fr;
+grid-row: 0.5fr 0.5fr;
+grid-template-areas: "column column2";
+justify-content: center;
+}
+.column{
+grid-area: column;
+}
+.column2{
+grid-area: column2;
+}
+#mark{
+    border:1px solid white;
+    color:rgb(11, 11, 11);
+    background-color: rgb(176, 176, 176);
+    border-radius: 100%;
+    font-size:xx-small;
+    font-weight: bold;
+    padding-right: 5px;
+    padding-left: 5px;
+    height: 15px;
+    width:15px;
+    text-align: center;
+}
+#nrm{
+    position: relative;
+   float:right;
+    border-radius: 5px;
+    background-color:whitesmoke;
+    border:1px solid white;
+}
+#qmark{
+    position: relative;
+    float:right;
+    border:1px solid white;
+    color:rgb(11, 11, 11);
+    background-color: whitesmoke;
+    border-radius: 100%;
+    font-size:xx-small;
+    font-weight: bold;
+    padding-right: 5px;
+    padding-left: 5px;
+    height: 15px;
+    width:15px;
+    text-align: center;
+}
+
+#t{
+    font-size: medium;
+    font-weight: bold;
+}
+#point{
+    float:right;
+    font-size: large;
+}
+#d{
+    direction: top;
+    float:right;
+}
+#info{
+    border:1px solid rgb(206, 206, 206);
+    width:70%;
+    background-color: white;
+    border-radius: 2px;
+}
+#first{
+    color:rgb(195, 185, 185);
+    width:90%;
+    left:0;
+}
+#second{
+    color:rgb(195, 185, 185);
+    width: 90%;
+}
+#green{
+    background-color:rgb(8, 163, 8);
+    border-radius: 5px;
+    border: white;
+    color:white;
+    font-weight: bold;
+}
+#orange{
+    background-color: rgb(255, 98, 0);
+    border-radius: 100%;
+    border:1px solid white;
+    color:white;
+}
+#seller{
+    color: rgb(138, 135, 135);
+    font-weight: bold;
+}
+#grade{
+    color: rgb(138, 135, 135);
+    font-weight: bold;
+}
+#shop{
+    color:rgb(81, 81, 208);
+}
+#campaign{
+    color:rgb(8, 163, 8);
+    font-weight: bold;
+}
+hr{
+    color:rgb(195, 185, 185);
+}
+#sepet{
+    position: absolute;
+    width:100px;
+    height: 50px;
+    border: 0.5px solid rgb(116, 116, 116);
+    text-align: center;
+    border-radius: 100px;
+    border-collapse: collapse;
+}
+#minus, #plus{
+    background-color: grey;
+}
+
+.btn{
+    position: relative;
+    left: 150px;
+    background-color: rgb(255, 98, 0);
+    height: 50px;
+    width:150px;
+    border-radius: 5px;
+    color:white;
+   margin: auto;
+   border: 1px solid rgb(255, 98, 0);
+}
+.btn>span{
+    font-size: medium;
+    font-weight: bold;
+    justify-content: center;
+}
+.subcontainer{
+    margin-top: 10px;
+    margin-right: 5px;
+    height: 20%;
+    background-color: white;
+    text-align: left;
+    padding-top:20px ;
+    padding-left:20px ;
+    border-radius: 5px;
+    border:1px solid plum;
+}
+#jet{
+    position: relative;
+    float: right;
+}
+#f1{
+    font-weight: bold;
+    font-size: large;
+}
+#f2{
+    font-weight: bold;
+}
+#oh1{
+    color: rgb(255, 98, 0);
+}
+@media screen and (max-width:678px) {
+    body{
+        display:grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "section1"
+        "section2";
+    }
+    .image{
+     justify-content: center;
+    }
+}
+@media screen and (max-width:1120px) {
+    body{
+        display:grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "section1"
+        "section2";
+    }
+    .image{
+     justify-content: center;
+    }
+}
+</style>
+<body>
+    <div class="section1">
+        <div class="image">
+        <img src="kulaklik.jfif">
+    </div>
+    <div class="row">
+    <div class="column">
+        <hr id="first">
+        <table>
+            <tr>
+                <td>Çift Telefon Desteği </td>
+                <td>Yok</td>
+            </tr>
+            <tr>
+                <td>Suya & Tere Dayanıklı </td>
+                <td>Hayır</td>
+            </tr>
+            <tr>
+                <td>Kullanım Tipi</td>
+                <td>Kulak içi</td>
+            </tr>
+        </table>
+    </div>
+    <div class="column2">
+        <hr id="second">
+        <table>
+            <tr>
+                <td>Bluetooth Versiyon</td>
+                <td>5.0</td>
+            </tr>
+            <tr>
+                <td>Aktif Gürültü Önleme(ANC)</td>
+                <td>Yok</td>
+            </tr>
+        </table>
+    </div>
+</div>
+    </div>
+    <div class="section2">
+    <span id="head">TWS i12 Bluetooth 5.0 Kulaklık- Şarj Üniteli</span><br>
+    <span id="brand">TWS</span><br>
+    <span id="price">115,00 TL</span>
+   <span class="fa fa-star notchecked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span id="point">3,5</span><br>
+    <p id="d">7649 değerlendirme</p>
+    <p>19 TL x 6 aya varan <span id="t">Taksitle</span></p>
+    <table id="info">
+        <tr>
+            <td><span id="seller">Satıcı:</span> <span id="shop">SFIT TEKNOLOJI ...</span></td>
+            <td><span id="grade">Puan</span> <button id="green">9,4</button ><button id="mark">?</button></td>
+            <td>Kampanyaları Gör <button id="orange">3</button></td>
+        </tr>
+    </table>
+    <br>
+    <span id="campaign">Seçili Telefon Alana TWS i12 Bluetooth 5.0 Kulaklık %10 İndirimli!</span>
+    <br>
+    <hr>
+ <table id="sepet">
+    <tr>
+        <td id="minus"> - </td>
+        <td id="quantity">1</td>
+        <td id="plus">+</td>
+    </tr>
+</table>
+<button type="button" class="btn btn-primary btn-lg"><i class="fa fa-shopping-cart" style="font-size:25px"></i><span> Sepete Ekle</span></button>
+<div class="container">
+    <span>Eski ürününü yenisiyle değiştirmek ister misin?<button id="nrm">Faydalan</button><button id="qmark">?</button></span>
+</div>
+<hr>
+<i class="fa fa-heart-o" style="font-size:20px; color:rgb(120, 120, 120);"><span> Beğen</span></i>
+<i class="fa fa-bookmark" style=" color:rgb(120, 120, 120);"><span> Listeme Ekle</span></i>
+<!-- <i class='fas fa-exchange-alt'><span>Karşılaştır</span></i><br><br> -->
+<hr>
+<div class="subcontainer">
+    <span id="f1">Teslimat Seçenekleri<button id="qmark">?</button><br><br></span>
+        <span id="f2">Standart Teslimat <img id="jet" src="hepsijet.jpg" ></span><br>
+        <span>En geç 14 Ekim Cuma Günü</span> kargoda </span>
+</div>
+<h1>Diğer Satıcılar-<span id="oh1">Tümü(2)</span></h1>
+</div>
+</body>
+</html>
