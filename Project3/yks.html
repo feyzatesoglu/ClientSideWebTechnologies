@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+        <head>
+            <title>YKS</title>
+                <!-- These two are for responsive pages -->
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+                <!-- Latest compiled and minified CSS -->
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        
+                <!-- The following Javascript libraries are necessary only if you are using Bootstrap components
+                    that make use of Javascript such as modals, tooltips, popovers etc.
+                    However, if you just use the CSS part of Bootstrap, you don't need them. -->
+        
+                <!-- jQuery library -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+                <!-- Popper JS -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        
+                <!-- Latest compiled JavaScript -->
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+                <script src="https://kit.fontawesome.com/28adcff374.js" crossorigin="anonymous"></script>
+        </head>
+        <style>
+            .grid{
+                display:grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr;
+                gap: 10px;
+                grid-template-areas: "col col";
+            }
+            .grid-col{
+                display: grid;
+                grid-area: col;
+            }
+            .table-responsive{
+              box-sizing: border-box;
+              border-radius: 5px;
+                background-color: white;
+                box-shadow: 2px grey;
+                padding: 10px;
+                margin-top: 10px;
+                margin-left: -10px;
+                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            }
+            .table{
+              margin: 1px 0;
+              padding: 10px;
+              min-width: 100%;
+              border-radius: 5px;
+            }
+            .container-obs{
+              margin-top:10px;
+            }
+            th{
+              text-align: center;
+            }
+            td{
+              font-size: medium;
+              font-weight: bold;
+            }
+            #examName{
+              font-size: x-large;
+              font-weight: bolder;
+              color: black;
+            }
+            .header1{
+                font-size: x-large;
+                font-weight: bold;
+                color: grey;
+                text-align: center;
+            }
+            #net{
+              text-align: center;
+              font-size:larger;
+              font-weight: bolder;
+            }
+            #icon{
+              right:0px;
+              font-size: 14px;
+              color:#0F7B1D;
+              position: relative;
+              bottom:25px;
+              left:50px;
+            }
+            #tyt-chk{
+              color:#0F7B1D;
+              position: relative;
+              bottom:-5px;
+              right:20px;
+            }
+            #x{
+              color:red;
+              position: relative;
+              bottom:25px;
+              left:55px;
+              font-size: small;
+            }
+            #tyt-x{
+              color:red;
+              position: relative;
+              bottom:-5px;
+              right:15px;
+              font-size: small;
+            }
+            input[type=text]{
+              margin: auto;
+              width:70px;
+              height: 35px;
+              border-radius: 5px;
+              text-align: center;
+              border: 1px solid rgb(189, 188, 188);
+              box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            }
+            input[type=text-empty]{
+              width:70px;
+              height: 35px;
+              border-radius: 5px;
+              text-align: center;
+              border: 1px solid white;
+            }
+            #yan-baslık{
+              color: rgb(175, 175, 175);
+              font-size: small;
+              font-weight: 200;
+            }
+            #son{
+              text-align: center;
+            }
+            #totalQstn{
+              color:rgb(73, 73, 242);
+              font-size: medium;
+              font-weight: lighter;
+            }
+            .button{
+              margin-top: 10px;
+              display: inline-block;
+              position: relative;
+              white-space: nowrap;
+              height: 40px;
+              border-radius: 5px;
+              font-weight: 300;
+              border:none;
+              line-height: 40px;
+              font-size: 14px;
+              padding: 0 22px;
+              color:#FFF;
+              width: 100%;
+              text-align: center;
+              text-shadow: none;
+            }
+            .button-red{
+              background-color: #eb0241;
+              grid-area: btn1;
+            }
+            .button-border{
+              background-color: #FFF;
+              color: #eb0241;
+              border: 2px solid  #eb0241;
+              grid-area: btn2;
+            }
+            .col-md-6,.col-lg-6,.col-sm-6,.col-xs-6{
+              position: relative;
+              min-height: 1px;
+              padding-left: 15px;
+            }
+            @media screen and (max-width:992px) {
+             .grid{
+                display:grid;
+                grid-template-columns: 1fr;
+                grid-template-areas: "col" 
+                "col";
+             }
+            }
+            .button-border:hover{
+              background-color: #eb0241;
+              color: #FFF;
+            }
+        </style>
+        <body>
+          <div class="container p-3">
+            <h1>2023 YKS,TYT,AYT Puan Hesaplama</h1>
+            <div class="grid">
+            <div class="g-col-6">
+            <!-- Responsive tables added -->
+            <div class="table-responsive table-borderless">
+              <div class="header1"><span id="examName">AYT</span> Puanı Hesaplama</div>
+                <table class="table">
+                    <tr>
+                      <th> </th>
+                      <th><i class="fa-solid fa-check" style="font-size: large;"></i></th>
+                      <th><i class="fa-solid fa-x"></i></th>
+                      <th>Net</th>
+                    </tr>
+                    <tr id="yan-baslık">
+                    <td><div>Türk Dili ve Edebiyatı ve Sosyal Bilimler-1 Testi</div></td>
+                    </tr>
+                  <tr>
+                    <td>Türk Dili ve<br> Edebiyatı<p id="totalQstn" class="totalQstnTDE">24 Soru</p></td>
+                    <td><input type="text" id="aytTDE_true" oninput="calculateAytTotalTDE()" onchange="validateLimiter()" onkeypress="return onlyNumberKey(event)" placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytTDE_false" oninput="calculateAytTotalTDE()" onkeypress="return onlyNumberKey(event)" placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytTDENet">-</td>
+                    <td><hr></td>
+                  </tr>
+                  <tr>
+                    <td>Tarih-1<p id="totalQstn">10 Soru</p></td>
+                    <td><input type="text" id="aytTRH_true" oninput="calculateAytTotalTRH()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytTRH_false" oninput="calculateAytTotalTRH()" placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytTRHNet">-</td>
+                  </tr>
+                  <tr>
+                    <td>Coğrafya-1<p id="totalQstn">6 Soru</p></td>
+                    <td><input type="text" id="aytCRF_true" oninput="calculateAytTotalCGRFYA()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytCRF_false" oninput="calculateAytTotalCGRFYA()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytCRFNet">-</td>
+                  </tr>
+                  <tr id="yan-baslık">
+                    <td><span>Sosyal Bilimler-2 Testi</span></td>
+                  </tr>
+                  <tr>
+                    <td>Tarih-2<p id="totalQstn">11 Soru</p></td>
+                    <td><input type="text" id="aytTRH2_true" oninput="calculateAytTotalTRH2()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytTRH2_false" oninput="calculateAytTotalTRH2()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytTRH2Net">-</td>
+                  </tr>
+                  <tr>
+                    <td>Coğrafya-2<p id="totalQstn">11 Soru</p></td>
+                    <td><input type="text" id="aytCF2_true" oninput="calculateAytTotalCF2()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytCF2_false" oninput="calculateAytTotalCF2()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytCF2Net">-</td>
+                  </tr>
+                  <tr>
+                    <td>Felsefe Grubu<p id="totalQstn">12 Soru</p></td>
+                    <td><input type="text" id="aytFS_true" oninput="calculateAytTotalFS()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytFS_false" oninput="calculateAytTotalFS()" placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytFSNet">-</td>
+                    <td><hr></td>
+                  </tr>
+                  <tr>
+                    <td>Din Kültürü ve<br>Ahlak Bilgisi/Ek<br>Felsefe<p id="totalQstn">6 Soru</p></td>
+                    <td><input type="text" id="aytDVA_true" oninput="calculateAytTotalDVA()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytDVA_false" oninput="calculateAytTotalDVA()" onkeypress="return onlyNumberKey(event)" placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytDVANet">-</td>
+                    <td><hr></td>
+                  </tr>
+                  <tr id="yan-baslık">
+                    <td><span>Matematik Testi</span></td>
+                  </tr>
+                  <tr>
+                    <td>Matematik<p id="totalQstn">40 Soru</p></td>
+                    <td><input type="text" id="aytMAT_true" oninput="calculateAytTotalMAT()" onkeypress="return onlyNumberKey(event)" placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytMAT_false" oninput="calculateAytTotalMAT()"onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytMATNet">-</td>
+                    <td><hr></td>
+                  </tr>
+                  <tr id="yan-baslık">
+                    <td><span>Fen Bilimleri Testi</span></td>
+                  </tr>
+                  <tr>
+                    <td>Fizik<p id="totalQstn">14 Soru</p></td>
+                    <td><input type="text" id="aytFK_true"  oninput="calculateAytTotalFK()" onkeypress="return onlyNumberKey(event)" placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytFK_false"  oninput="calculateAytTotalFK()" onkeypress="return onlyNumberKey(event)"   placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytFKNet">-</td>
+                    <td><hr></td>
+                  </tr>
+                  <tr>
+                    <td>Kimya<p id="totalQstn">13 Soru</p></td>
+                    <td><input type="text" id="aytKM_true"  oninput="calculateAytTotalKM()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytKM_false"  oninput="calculateAytTotalKM()" onkeypress="return onlyNumberKey(event)" placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytKMNet">-</td>
+                    <td><hr></td>
+                  </tr>
+                  <tr>
+                    <td>Biyoloji<p id="totalQstn">13 Soru</p></td>
+                    <td><input type="text" id="aytBY_true"  oninput="calculateAytTotalBY()" onkeypress="return onlyNumberKey(event)"   placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="icon"></i></td>
+                    <td><input type="text" id="aytBY_false" oninput="calculateAytTotalBY()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="x"></i></td>
+                    <td class="net" id="aytBYNet">-</td>
+                    <td><hr></td>
+                  </tr>
+                </table>
+              </div>
+                </div>
+              <div class="g-col-6">
+                <div class="table-responsive table-borderless">
+                    <table class="table">
+                      <div class="header1"><span id="examName">TYT</span> Puanı Hesaplama</div>
+                        <tr>
+                          <th> </th>
+                          <th><i class="fa-solid fa-check" style="font-size: large;"></i></th>
+                          <th><i class="fa-solid fa-x"></i></th>
+                          <th>Net</th>
+                        </tr>
+                      <tr>
+                        <tr>
+                            <td>Türkçe<p id="totalQstn">40 Soru</p></td>
+                            <td><input type="text" id="tytTRK_true" oninput="calculateTytTotalTRK()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="tyt-chk"></i></td>
+                           <td><input type="text" id="tytTRK_false" oninput="calculateTytTotalTRK()" onkeypress="return onlyNumberKey(event)" placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="tyt-x"></i></td>
+                            <td class="tytTRK_net" id="tytTRK_net">-</td>
+                          </tr>
+                          <tr>
+                            <td>Sosyal Bilimler<p id="totalQstn">20 Soru</p></td>
+                            <td><input type="text" id="tytSB_true" oninput="calculateTytTotalSB()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="tyt-chk"></i></td>
+                            <td><input type="text" id="tytSB_false" oninput="calculateTytTotalSB()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="tyt-x"></i></td>
+                            <td class="tytSB_net" id="tytSB_net">-</td>
+                          </tr>
+                          <tr>
+                            <td>Temel Matematik<p id="totalQstn">40 Soru</p></td>
+                            <td><input type="text" id="tytTM_true" oninput="calculateTytTotalTM()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="tyt-chk"></i></td>
+                            <td><input type="text" id="tytTM_false" oninput="calculateTytTotalTM()" onkeypress="return onlyNumberKey(event)" placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="tyt-x"></i></td>
+                            <td class="tytTM_net" id="tytTM_net">-</td>
+                          </tr>
+                          <tr>
+                            <td>Fen Bilimleri<p id="totalQstn">20 Soru</p></td>
+                            <td><input type="text" id="tytFB_true" oninput="calculateTytTotalFB()" onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-check" id="tyt-chk"></i></td>
+                            <td><input type="text" id="tytFB_false" oninput="calculateTytTotalFB()"onkeypress="return onlyNumberKey(event)"  placeholder="-" maxlength="2"><i class="fa-solid fa-x" id="tyt-x"></i></td>
+                            <td class="tytFB_net" id="tytFB_net">-</td>
+                          </tr>
+                    </table>
+                </div>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <div class="header1"><span id="examName">Ortaöğretim</span> Başarı Puanı</div>
+                          <tr>
+                            <td>Diploma Notu</td>
+                            <td><input type="text-empty"></td>
+                            <td><input type="text-empty"></td>
+                            <td><input type="text" id="dpnot" onchange="handleChange(this);" oninput="calculateOBP()" onkeypress="return onlyNumberKey(event)" ></td>
+                          </tr>
+                          <tr>
+                            <td>OBP</td>
+                            <td><input type="text-empty"></td>
+                            <td><input type="text-empty"></td>
+                            <td><input type="text" id="obp"  oninput="calculateOBP()" onkeypress="return onlyNumberKey(event)" ></td>
+                          </tr>
+                    </table>
+                    <input type="checkbox" id="box" name="box" unchecked>
+                    <label for="box">Geçen Sene Bir Bölüme Yerleştim.</label>
+                      </table>
+                    </div>
+                    <div class="table-responsive">
+                      <table class="table">
+                        <h1 id="son">SONUÇLAR</h1>
+                          <th>Puan Türü</th>
+                          <th>Ham puan</th>
+                          <th>Yerleştirme Puanı</th>
+                          <tr>
+                            <td>TYT</td>
+                            <td class="txt" id="hampuan">-</td>
+                            <td class="txt" id="yerlestirmeTyt">-</td>
+                          </tr>
+                          <tr>
+                            <td>SAY</td>
+                            <td class="txt" id="sayHam">-</td>
+                            <td class="txt" id="yerlestirmeSAY">-</td>
+                          </tr>
+                          <tr>
+                            <td>EA</td>
+                            <td class="txt" id="eaHam">-</td>
+                            <td class="txt" id="yerlestirmeEA">-</td>
+                          </tr>
+                          <tr>
+                            <td>SÖZ</td>
+                            <td class="txt" id="sözHam">-</td>
+                            <td class="txt" id="yerlestirmeSOZ">-</td>
+                          </tr>
+                      </table>
+                    </div>
+                    <div class="container  hidden-lg hidden-xl visible-md visible-sm visible-xs" id="buttons-container">
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <div class="button button-red" id="calculate" onclick="calculateALL()" >Hesapla</div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                          <div class="button button-red button-border" id="clear" onclick="clearALL()">Temizle</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+           </div>
+          </div>
+          <script>
+            function validateLimiter(){
+              var trueAnswer=document.getElementById("aytTDE_true")
+              var falseAnswer=document.getElementById("aytTDE_false")
+              var question=Number(document.getElementByClass("totalQstnTDE").innerHTML)
+              if(trueAnswer>question||falseAnswer>question){
+                alert("Geçerli sayı giriniz!")
+              }
+            }
+             function calculateAytTotalTDE(){
+              var trueAnswer=document.getElementById("aytTDE_true")
+              var falseAnswer=document.getElementById("aytTDE_false")
+              var total=document.getElementById("aytTDENet")
+              total.innerHTML=Number(trueAnswer.value)-Number(falseAnswer.value)*Number(0.25)
+              var sonuc=Number(total.innerHTML)
+              return sonuc
+            }
+
+              function calculateAytTotalTRH(){
+              var trueTHAnswer=document.getElementById("aytTRH_true")
+              var falseTHAnswer=document.getElementById("aytTRH_false")
+              var totalTH=document.getElementById("aytTRHNet")
+              totalTH.innerHTML=Number(trueTHAnswer.value)-Number(falseTHAnswer.value)*Number(0.25)
+              var sonuc=Number(totalTH.innerHTML)
+              return sonuc
+            }
+
+              function calculateAytTotalCGRFYA(){
+              var trueCFAnswer=document.getElementById("aytCRF_true")
+              var falseCFAnswer=document.getElementById("aytCRF_false")
+              var totalCF=document.getElementById("aytCRFNet")
+              totalCF.innerHTML=Number(trueCFAnswer.value)-Number(falseCFAnswer.value)*Number(0.25)
+              var sonuc=Number(totalCF.innerHTML)
+              return sonuc
+            }
+              
+              function calculateAytTotalCGRFYA(){
+              var trueCFAnswer=document.getElementById("aytCRF_true")
+              var falseCFAnswer=document.getElementById("aytCRF_false")
+              var totalCF=document.getElementById("aytCRFNet")
+              totalCF.innerHTML=Number(trueCFAnswer.value)-Number(falseCFAnswer.value)*Number(0.25)
+              var sonuc=Number(totalCF.innerHTML)
+              return sonuc
+            }
+
+              function calculateAytTotalTRH2(){
+              var trueTRH2Answer=document.getElementById("aytTRH2_true")
+              var falseTRH2Answer=document.getElementById("aytTRH2_false")
+              var totalTRH2=document.getElementById("aytTRH2Net")
+              totalTRH2.innerHTML=Number(trueTRH2Answer.value)-Number(falseTRH2Answer.value)*Number(0.25)
+              var sonuc=Number(totalTRH2.innerHTML)
+              return sonuc
+            }
+
+              function calculateAytTotalCF2(){
+              var trueCF2Answer=document.getElementById("aytCF2_true")
+              var falseCF2Answer=document.getElementById("aytCF2_false")
+              var totalCF2=document.getElementById("aytCF2Net")
+              totalCF2.innerHTML=Number(trueCF2Answer.value)-Number(falseCF2Answer.value)*Number(0.25)
+              var sonuc=Number(totalCF2.innerHTML)
+              return sonuc
+            }
+
+              function calculateAytTotalFS(){
+              var trueFSAnswer=document.getElementById("aytFS_true")
+              var falseFSAnswer=document.getElementById("aytFS_false")
+              var totalFS=document.getElementById("aytFSNet")
+              totalFS.innerHTML=Number(trueFSAnswer.value)-Number(falseFSAnswer.value)*Number(0.25)
+              var sonuc=Number(totalFS.innerHTML)
+              return sonuc
+            }
+
+              function calculateAytTotalDVA(){
+              var trueDVAAnswer=document.getElementById("aytDVA_true")
+              var falseDVAAnswer=document.getElementById("aytDVA_false")
+              var totalDVA=document.getElementById("aytDVANet")
+              totalDVA.innerHTML=Number(trueDVAAnswer.value)-Number(falseDVAAnswer.value)*Number(0.25)
+              var sonuc=Number(totalDVA.innerHTML)
+              return sonuc
+            }
+              function calculateAytTotalMAT(){
+              var trueMATAnswer=document.getElementById("aytMAT_true")
+              var falseMATAnswer=document.getElementById("aytMAT_false")
+              var totalMAT=document.getElementById("aytMATNet")
+              totalMAT.innerHTML=Number(trueMATAnswer.value)-Number(falseMATAnswer.value)*Number(0.25)
+              var sonuc=Number(totalMAT.innerHTML)
+              return sonuc
+            }
+              
+              function calculateAytTotalFK(){
+              var trueFKAnswer=document.getElementById("aytFK_true")
+              var falseFKAnswer=document.getElementById("aytFK_false")
+              var totalFK=document.getElementById("aytFKNet")
+              totalFK.innerHTML=Number(trueFKAnswer.value)-Number(falseFKAnswer.value)*Number(0.25)
+              var sonuc=Number(totalFK.innerHTML)
+              return sonuc
+              }
+              function calculateAytTotalKM(){
+              var trueKMAnswer=document.getElementById("aytKM_true")
+              var falseKMAnswer=document.getElementById("aytKM_false")
+              var totalKM=document.getElementById("aytKMNet")
+              totalKM.innerHTML=Number(trueKMAnswer.value)-Number(falseKMAnswer.value)*Number(0.25)
+              var sonuc=Number(totalKM.innerHTML)
+              return sonuc
+              }
+              function calculateAytTotalBY(){
+              var trueBYAnswer=document.getElementById("aytBY_true")
+              var falseBYAnswer=document.getElementById("aytBY_false")
+              var totalBY=document.getElementById("aytBYNet")
+              totalBY.innerHTML=Number(trueBYAnswer.value)-Number(falseBYAnswer.value)*Number(0.25)
+              var sonuc=Number(totalBY.innerHTML)
+              return sonuc
+              }
+
+              function calculateTytTotalTRK(){
+              var trueTRK=document.getElementById("tytTRK_true")
+              var falseTRK=document.getElementById("tytTRK_false")
+              var totalTRK=document.getElementById("tytTRK_net")
+              totalTRK.innerHTML=Number(trueTRK.value)-Number(falseTRK.value)*Number(0.25)
+              var sonuc=Number(totalTRK.innerHTML)
+              return sonuc
+            }
+            function calculateTytTotalSB(){
+              var trueSB=document.getElementById("tytSB_true")
+              var falseSB=document.getElementById("tytSB_false")
+              var totalSB=document.getElementById("tytSB_net")
+              totalSB.innerHTML=Number(trueSB.value)-Number(falseSB.value)*Number(0.25)
+              var sonuc=Number(totalSB.innerHTML)
+              return sonuc
+            }
+            function calculateTytTotalTM(){
+              var trueTM=document.getElementById("tytTM_true")
+              var falseTM=document.getElementById("tytTM_false")
+              var totalTM=document.getElementById("tytTM_net")
+              totalTM.innerHTML=Number(trueTM.value)-Number(falseTM.value)*Number(0.25)
+              var sonuc=Number(totalTM.innerHTML)
+              return sonuc
+            }
+            function calculateTytTotalFB(){
+              var trueFB=document.getElementById("tytFB_true")
+              var falseFB=document.getElementById("tytFB_false")
+              var totalFB=document.getElementById("tytFB_net")
+              totalFB.innerHTML=Number(trueFB.value)-Number(falseFB.value)*Number(0.25)
+              var sonuc=Number(totalFB.innerHTML)
+              return sonuc
+            }
+            function calculateOBP(){     
+                var dp=document.getElementById("dpnot")
+                if (Number(dp.value) < 0 || Number(dp.value) > 100) {
+               alert("Grade out of bounds")}
+                var total=Number(dp.value)*Number(5)
+                document.getElementById("obp").innerHTML=Number(total)
+            }
+            document.getElementById("obp").readOnly=true;
+              validateLimiter()
+              calculateAytTotalTDE()
+              calculateAytTotalTRH()
+              calculateAytTotalCGRFYA()
+              calculateAytTotalTRH2()
+              calculateAytTotalCF2()
+              calculateAytTotalFS()
+              calculateAytTotalDVA()
+              calculateAytTotalMAT()
+              calculateAytTotalFK()
+              calculateAytTotalKM()
+              calculateAytTotalBY()
+              calculateTytTotalTRK()
+              calculateTytTotalSB()
+              calculateTytTotalTM()
+              calculateTytTotalFB()
+              calculateOBP()
+              calculateALL()
+              clearALL()
+              function calculateALL(){
+                var dp=document.getElementById("dpnot").value;
+                var obp=Number(dp)*Number(5);
+
+                var tytScore=((calculateTytTotalFB()+calculateTytTotalTRK()+calculateTytTotalSB()+calculateTytTotalTM())*Number(5))
+                document.getElementById("hampuan").innerHTML=tytScore;
+                if(document.getElementById("box").checked == true){
+                  var tytYerlestirmePuani=Number(dp)*Number(0.3)+tytScore;
+                  document.getElementById("yerlestirmeTyt").innerHTML=tytYerlestirmePuani; 
+                }
+                else{
+                  var tytYerlestirmePuani=Number(dp)*Number(0.6)+tytScore;
+                  document.getElementById("yerlestirmeTyt").innerHTML=tytYerlestirmePuani; 
+                }
+
+                var aytSayScore=(Number(6.25)*(calculateAytTotalMAT()+calculateAytTotalBY()+calculateAytTotalFK()+calculateAytTotalFK()))
+                document.getElementById("sayHam").innerHTML=aytSayScore;
+                if(document.getElementById("box").checked == true){
+                  var SAYyerlestirmePuani=Number(dp)*Number(0.3)+aytSayScore;
+                  document.getElementById("yerlestirmeSAY").innerHTML=SAYyerlestirmePuani; 
+                }
+                else{
+                  var SAYyerlestirmePuani=Number(dp)*Number(0.6)+aytSayScore;
+                  document.getElementById("yerlestirmeSAY").innerHTML=SAYyerlestirmePuani; 
+                }
+
+                var aytSozScore=(Number(6.35)*(calculateAytTotalTDE()+calculateAytTotalTRH()+calculateAytTotalCGRFYA()+calculateAytTotalCF2()+calculateAytTotalTRH2()+calculateAytTotalFS()+calculateAytTotalDVA()))*Number(0.6)+((calculateTytTotalFB()+calculateTytTotalTRK()+calculateTytTotalSB()+calculateTytTotalTM())*Number(5))*Number(0.4)
+                if(document.getElementById("box").checked == true){
+                  var SOZyerlestirmePuani=Number(dp)*Number(0.3)+aytSozScore;
+                  document.getElementById("yerlestirmeSOZ").innerHTML=SOZyerlestirmePuani; 
+                }
+                else{
+                  var SOZyerlestirmePuani=Number(dp)*Number(0.6)+aytSozScore;
+                  document.getElementById("yerlestirmeSOZ").innerHTML=SOZyerlestirmePuani; 
+                }
+
+                document.getElementById("sözHam").innerHTML=aytSozScore;
+                var aytEaScore=((Number(6.35)*(calculateAytTotalTDE()+calculateAytTotalTRH()+calculateAytTotalCGRFYA()+calculateAytTotalCF2()+calculateAytTotalTRH2()+calculateAytTotalFS()+calculateAytTotalDVA()))*Number(0.6)+((calculateTytTotalFB()+calculateTytTotalTRK()+calculateTytTotalSB()+calculateTytTotalTM())*Number(5))*Number(0.4)+(12.5)*(calculateAytTotalMAT()))*(0.5)
+                document.getElementById("eaHam").innerHTML=aytEaScore;
+                if(document.getElementById("box").checked == true){
+                  var EAyerlestirmePuani=Number(dp)*Number(0.3)+aytEaScore;
+                  document.getElementById("yerlestirmeEA").innerHTML=EAyerlestirmePuani; 
+                }
+                else{
+                  var EAyerlestirmePuani=Number(dp)*Number(0.6)+aytEaScore;
+                  document.getElementById("yerlestirmeEA").innerHTML=EAyerlestirmePuani; 
+                }
+              }
+              function clearALL(){
+                let netItems=document.querySelectorAll(".net")
+                var inputs = document.querySelectorAll('input')
+                let cleanerItems=document.querySelectorAll(".txt")
+                inputs.forEach(input =>  input.value = '');
+                cleanerItems.forEach(element=>{
+                  element.innerText=" "
+                })
+                netItems.forEach(element=>{
+                  element.innerText="-"
+                })
+                document.getElementById("tytTRK_net").innerText="-"
+                document.getElementById("tytSB_net").innerText="-"
+                document.getElementById("tytTM_net").innerText="-"
+                document.getElementById("tytFB_net").innerText="-"
+
+              }
+              function onlyNumberKey(evt) {
+              // Only ASCII character in that range allowed
+              var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+              if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                  return false;
+              return true;
+            }
+            function handleChange(input) {
+            if (input.value < 0) input.value = 0;
+            if (input.value > 100) input.value = " ";
+            }
+          </script>
+        </body>
+    </html>
