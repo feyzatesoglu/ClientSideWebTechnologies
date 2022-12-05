@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <html lang="en">
+        <head>
+            <title>Digital Clock</title>
+                <!-- These two are for responsive pages -->
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+                <!-- Latest compiled and minified CSS -->
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        
+                <!-- The following Javascript libraries are necessary only if you are using Bootstrap components
+                    that make use of Javascript such as modals, tooltips, popovers etc.
+                    However, if you just use the CSS part of Bootstrap, you don't need them. -->
+        
+                <!-- jQuery library -->
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+                <!-- Popper JS -->
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        
+                <!-- Latest compiled JavaScript -->
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        </head>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+   .background-image{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(levander.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+   }
+   .clock-area h1{
+    position:relative;
+    display:block;
+    color:aliceblue;
+    text-align: center;
+    margin:10px 0;
+    font-weight: 600;
+    text-transform: uppercase;
+   }
+   .clock-area .time{
+     display: flex;
+   }
+   .clock-area .time>div{
+    position:relative;
+    margin:0 5px;
+
+   }
+   .clock-area .time>div>span{
+    position: relative;
+    display: block;
+    width:100px;
+    height: 100px;
+    background-color: rgba(84, 84, 255, 0.5);
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    z-index: 10;
+    box-shadow:0 0 0 1px rgba(0,0,0,.2);
+   }
+   .clock-area .time> div>span:nth-child(2){
+    height: 40px;
+    font-size:larger;
+    font-weight: 300;
+    z-index: 9;
+    background: rgba(0, 0, 200, 0.5);
+   }
+   #empty{
+    visibility: hidden;
+   }
+   #pm{
+    position: relative;
+    background-color:rgb(76, 255, 56);
+    z-index: 9;
+   }
+   /* .container{
+    display:grid;
+    grid-template-areas: "hours minutes seconds" ;
+   }
+   .Hours{
+    width:100px;
+    height:100px;
+    background: rgba(71, 71, 250, 0.5);
+    grid-area: hours;
+
+   }
+   .Minutes{
+    width:100px;
+    height:100px;
+    background:rgba(71, 71, 250, 0.5);
+    grid-area: minutes;
+   }
+   .Seconds{
+    width:100px;
+    height:100px;
+    background: rgba(71, 71, 250, 0.5);
+    grid-area: seconds;
+   }
+   .centered{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size:xx-large;
+    font-weight: bold;
+    color:white;
+    grid-area: header;
+   } */
+    </style>
+</head>
+<body>
+<div class="background-image">
+    <div class="clock-area"><h1>DIGITAL CLOCK</h1>
+    <div class="time">
+        <div><span id="hours">00</span><span>HOURS</span></div>
+        <div><span id="minutes">00</span><span>MINUTES</span></div>
+        <div><span id="seconds">00</span><span>SECONDS</span></div>
+        <div><span id="empty"></span><span id="pm">PM</span></div>
+    </div>
+    </div>
+</div>
+ </div>
+ <script>
+function displayTime(){
+    var dateTime=new Date();
+
+    var hours=document.getElementById('hours');
+    var minutes=document.getElementById('minutes');
+    var seconds=document.getElementById('seconds');
+
+    var hr=new Date().getHours();
+    var mn=new Date().getMinutes();
+    var sc=new Date().getSeconds();
+    hours.innerHTML=hr;
+    minutes.innerHTML=mn;
+    seconds.innerHTML=sc;
+}
+   setInterval(displayTime,1000);
+ </script>
+</body>
+</html>
