@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <title>Tabs</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .tabContainer{
+       width: 500px;
+       position: absolute;
+       top:10%;
+       left: 50%;
+       transform: translate(-50%,-50%);
+    }
+    .buttonContainer{
+        height: 15%;
+    }
+    button{
+        width: 25%;
+        height: 100%;
+        float: left;
+        border: none;
+        border-right: 2px solid black;
+        outline:none;
+        cursor: pointer;
+        padding:10px;
+        background: #eee;
+    }
+    button:hover{
+        background-color: #d7d4d4;
+    }
+    .tabPanel{
+        width: 500px;
+        position: absolute;
+        top:90%;
+        background-color: grey;
+        color: black;
+        text-align: left;
+        padding: 20px;
+        box-sizing: border-box;
+        display: none;
+    }
+
+</style>
+<body>
+<div class="tabContainer">
+    <div class="buttonContainer">
+        <button  onclick="TabChanger(0,'#FBB7C6')">Tab1</button>
+        <button  onclick="TabChanger(1,'#FBB7C6')">Tab2</button>
+        <button  onclick="TabChanger(2,'#FBB7C6')">Tab3</button>
+        <button  onclick="TabChanger(3,'#FBB7C6')">Tab4</button>
+    </div>
+    <div class="tabPanel" >111 111 111 111 111 111 111 111 111 111 111 111 111 111<br>
+                          111 111 111 111 111 111 111 111 111 111 111 111 111 111<br> 
+                          111 111 111 111 111 111 111 111 111 111 111 111 111 111<br>
+                          111 111 111 111 111 111 111 111 111 111 111 111 111 111<br>
+                          111 111 111 111 111 111 111 111 111 111 111 111 111 111<br>
+                          111 111 111 111 111 111 111 111 111 111 111 111 111 111<br>
+                          111 111 111 111 111 111 111 111 111 111 111 111 111 111<br>
+                          111 111 111 111 111 111 111 111 111 111 111 111 111 111<br>
+                          111 111 111 111 111 111 111 111 111 111 111 111 111 111<br>
+                          111 111 111 111 111 111 111 111 111 111 111 111 111 111
+</div>
+    <div class="tabPanel">222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222<br>
+                          222 222 222 222 222 222 222 222 222 222 222 222 222 222
+    </div>
+    <div class="tabPanel">333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333<br>
+                          333 333 333 333 333 333 333 333 333 333 333 333 333 333
+    </div>
+    <div class="tabPanel">444 444 444 444 444 444 444 444 444 444 444 444 444 444<br>
+                          444 444 444 444 444 444 444 444 444 444 444 444 444 444<br>
+                          444 444 444 444 444 444 444 444 444 444 444 444 444 444<br>
+                          444 444 444 444 444 444 444 444 444 444 444 444 444 444<br>
+                          444 444 444 444 444 444 444 444 444 444 444 444 444 444<br>
+                          444 444 444 444 444 444 444 444 444 444 444 444 444 444<br>
+                          444 444 444 444 444 444 444 444 444 444 444 444 444 444<br>
+                          444 444 444 444 444 444 444 444 444 444 444 444 444 444<br>
+                          444 444 444 444 444 444 444 444 444 444 444 444 444 444<br>
+                          444 444 444 444 444 444 444 444 444 444 444 444 444 444
+    </div>
+    </div>
+    
+</body>
+<script>
+    var tabButtons=document.querySelectorAll("button")
+    var tabPanels=document.querySelectorAll(".tabPanel")
+    tabPanels[0].style.display="block"
+    tabPanels[0].style.backgroundColor="#FBB7C6"
+    tabButtons[0].style.backgroundColor="#FBB7C6"
+    tabButtons[0].style.borderRightColor="#FBB7C6"
+    tabButtons[3].style.borderRightColor="#eee"
+    function TabChanger(panelIn,color){
+        tabButtons.forEach(function(item){
+         item.style.backgroundColor="";
+         item.style.color="";
+         item.style.borderRightColor="black";
+        })
+        tabButtons[panelIn].style.backgroundColor=color;
+        tabButtons[panelIn].style.color="black";
+        tabButtons[panelIn].style.borderRightColor=color;
+        tabButtons[3].style.borderRightColor="#eee"
+        tabPanels.forEach(function(item){
+         item.style.display="none";
+        })
+        tabPanels[panelIn].style.display="block";
+        tabPanels[panelIn].style.backgroundColor =color;
+        tabButtons[3].style.borderRightColor="#eee"
+    }
+</script>
+</html>
